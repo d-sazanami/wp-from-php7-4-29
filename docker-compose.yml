@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+    db:
+        build: 
+            context: .
+            dockerfile: ./docker/db/Dockerfile
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: somewordpress
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wordpress
+            MYSQL_PASSWORD: wordpress
+            TZ: "Asia/Tokyo"
+        volumes:
+        - ./docker/db/mysql/:/var/lib/mysql:delegated
+    web:
+        build:
+            context: ./docker/web/
+        depends_on:
+            - db
+        ports:
+            - "8000:80"
+        volumes:
+        - "./www/html/:/var/www/html/"
+        - ./docker/web/logs/:/var/log/apache2/:delegated

@@ -1,0 +1,13 @@
+docker/db/mysql
+.DS_Store
+
+docker/web/logs
+www/html/*
+!www/html/wp-content
+www/html/wp-content/index.php
+www/html/wp-content/debug.log
+www/html/wp-content/languages/*
+www/html/wp-content/uploads/*
+www/html/wp-content/plugins/*
+www/html/wp-content/themes/*
+#!www/html/wp-content/themes/twentynineteen 
